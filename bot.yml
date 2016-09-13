@@ -1,0 +1,6 @@
+name: ServiceNow
+description:
+slackscopes:
+  - bot
+  - commands
+  - reactions:write
