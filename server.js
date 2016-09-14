@@ -15,16 +15,28 @@ require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 
 var app = slapp.attachToExpress(express())
 
-slapp.message('hi (.*)', 'direct_message', (msg, text, match1) => {
-  msg.say('How are you?').route('handleCreateRequest', { what: match1 })
-})
+slapp.message('CreateRequest (.*)', 'direct_message', (msg) => {
+  bot.api.users.info({user: message.user}, function(err, info){
+  msg.say({
+    text: 'Are you sure you want to create this Request?',
+    attachments: [
+      {
+        mrkdwn_in: ['text', 'pretext'],
+        text: '*Short Description:* Request created on Slack by ' + info.user.real_name + '\n *Description:* ' + message.match[1],
+        fallback: 'CreateRequest',
+        callback_id: 'CreateRequest_callback',
+        color: '#3AA3E3',
+        actions: [
+          { name: 'answer', text: 'Yes', type: 'button', value: 'yes' },
+          { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
+        ]
+      }
+    ]
+  })
+}}))
 
 slapp.route('handleCreateRequest', (msg, state) => {
-  msg.say(':smile' + state.what)
-})
-
-slapp.message('goodnight', 'mention', (msg) => {
-  msg.say('sweet dreams :crescent_moon: ')
+  msg.say(':smile ' + state.what)
 })
 
 slapp.message('yesno', (msg) => {
