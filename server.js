@@ -21,7 +21,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg) => {
     attachments: [
       {
         mrkdwn_in: ['text', 'pretext'],
-        text: '*Short Description:* Request created on Slack by ' + 'msg.user_name' + '\n *Description:* ' + message.match[1],
+        text: '*Short Description:* Request created on Slack by ' + 'msg.user_name' + '\n *Description:* ' + 'msg.match[1]',
         fallback: 'CreateRequest',
         callback_id: 'CreateRequest_callback',
         color: '#3AA3E3',
