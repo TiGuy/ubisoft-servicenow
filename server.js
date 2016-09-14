@@ -16,7 +16,7 @@ require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 var app = slapp.attachToExpress(express())
 
 slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
-  slapp.client.users.info(msg.meta.app_token, msg.body.event.user, (err, data) => {
+  slapp.client.users.info(msg.meta.app_token, msg.body.event.user, function(err, data) => {
     msg.say({
       text: 'Are you sure you want to create this Request?',
       attachments: [
