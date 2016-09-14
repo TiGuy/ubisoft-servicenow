@@ -22,6 +22,11 @@ slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
 slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile' + state.what)
 })
+
+slapp.message('goodnight', 'mention', (msg) => {
+  msg.say('sweet dreams :crescent_moon: ')
+})
+
 app.get('/', function (req, res) {
   res.send('Hello')
 })
