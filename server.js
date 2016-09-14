@@ -15,13 +15,13 @@ require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 
 var app = slapp.attachToExpress(express())
 
-slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, name, match1) => {
+slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
   msg.say({
     text: 'Are you sure you want to create this Request?',
     attachments: [
       {
         mrkdwn_in: ['text', 'pretext'],
-        text: '*Short Description:* Request created on Slack by ' + msg.event.user + '\n *Description:* ' + match1,
+        text: '*Short Description:* Request created on Slack by ' + msg.body.event.user + '\n *Description:* ' + match1,
         fallback: 'CreateRequest',
         callback_id: 'CreateRequest_callback',
         color: '#3AA3E3',
