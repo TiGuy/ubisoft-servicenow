@@ -55,7 +55,7 @@ slapp.message('yesno', (msg) => {
 })
 
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
-  if (value === 'yes') {msg.respond(msg.body.response_url, `{"attachments": [{"fallback": "Required plain-text summary of the attachment.", "color": "#2ab27b", "text": "Request RTASK005441 has been created."}]}`)}
+  if (value === 'yes') {msg.say({"attachments": [{"fallback": "Required plain-text summary of the attachment.", "color": "#2ab27b", "text": "Request RTASK005441 has been created."}]})}
   else {msg.respond(msg.body.response_url, `${value} is a bad choice!`)}
 })
 
