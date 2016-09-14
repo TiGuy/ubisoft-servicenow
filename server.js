@@ -55,7 +55,7 @@ slapp.message('yesno', (msg) => {
 })
 
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
-  if value === 'yes' {msg.respond(msg.body.response_url, `${value} is a good choice!`)}
+  if (value === 'yes') {msg.respond(msg.body.response_url, `${value} is a good choice!`)}
   else {msg.respond(msg.body.response_url, `${value} is a bad choice!`)}
 })
 
