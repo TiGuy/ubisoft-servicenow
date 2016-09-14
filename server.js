@@ -32,7 +32,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg) => {
       }
     ]
   })
-)})
+})
 
 slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile ' + state.what)
