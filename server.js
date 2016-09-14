@@ -65,8 +65,6 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
               "text": "Request RTASK005441 has been created."
          }
       ]
-        }
-      ]
     })
   }
   else {msg.respond(msg.body.response_url, `${value} is a bad choice!`)}
