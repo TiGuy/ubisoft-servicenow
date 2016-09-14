@@ -56,14 +56,14 @@ slapp.message('yesno', (msg) => {
 
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   if (value === 'yes') {
-    msg.say({
+    msg.respond({
       text: '',
       attachments: [
           {
             mrkdwn_in: ['text', 'pretext'],
             fallback: "Required plain-text summary of the attachment.",
             color: "#2ab27b",
-            text: "Request <https://ubisoft.service-now.com/nav_to.do?uri=%2Fsc_task.do%3Fsys_id%3D8cc10baedb3966409f8f785e0f9619e3%26sysparm_view%3Dcatalog%26sysparm_record_target%3Dsc_task%26sysparm_record_row%3D4%26sysparm_record_rows%3D23%26sysparm_record_list%3Du_avis_notice%253D%255Eassignment_groupDYNAMICjavascript%253AgetMyGroups%2528%2529%255EstateNOT%2BIN3%252C66%252C77%252C6%255Eactive%253Dtrue%255EORDERBYDESCdue_date|RTASK0341941> has been created."
+            text: "Request <https://ubisoft.service-now.com/sos/request_item.do?sysparm_sys_id=9b9a6128db3066c49f8f785e0f9619a6|RTASK0341941> has been created."
          }
       ]
     })
