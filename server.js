@@ -4,6 +4,7 @@ const Slapp = require('slapp')
 const BeepBoopConvoStore = require('slapp-convo-beepboop')
 const BeepBoopContext = require('slapp-context-beepboop')
 if (!process.env.PORT) throw Error('PORT missing but required')
+api = require('slack-utils/api')
 
 var slapp = Slapp({
   record: 'out.jsonl',
@@ -16,13 +17,13 @@ require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 var app = slapp.attachToExpress(express())
 
 slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
-    slapp.client.users.info(msg.meta.app_token, msg.body.event.user, function (err, data) {
+    infos = api.UserInfoById(msg.body.event.user)
       msg.say({
       text: 'Are you sure you want to create this Request?',
       attachments: [
         {
           mrkdwn_in: ['text', 'pretext'],
-          text: '*Short Description:* Request created on Slack by ' + info.user.real_name + '\n *Description:* ' + match1,
+          text: '*Short Description:* Request created on Slack by ' + infos.user.real_name + '\n *Description:* ' + match1,
           fallback: 'CreateRequest',
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
@@ -34,7 +35,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
       ]
   })
 })
-})
+
 slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile ' + state.what)
 })
