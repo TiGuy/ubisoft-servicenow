@@ -5,7 +5,6 @@ const BeepBoopConvoStore = require('slapp-convo-beepboop')
 const BeepBoopContext = require('slapp-context-beepboop')
 if (!process.env.PORT) throw Error('PORT missing but required')
 
-
 var slapp = Slapp({
   record: 'out.jsonl',
   convo_store: BeepBoopConvoStore(),
@@ -15,14 +14,13 @@ var slapp = Slapp({
 require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 
 var app = slapp.attachToExpress(express())
-
 slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
     msg.say({
       text: 'Are you sure you want to create this Request?',
       attachments: [
         {
           mrkdwn_in: ['text', 'pretext'],
-          text: '*Short Description:* Request created on Slack by ' + msg.body.event.username + '\n *Description:* ' + match1,
+          text: '*Short Description:* Request created on Slack by ' + msg.body.event.user.name + '\n *Description:* ' + match1,
           fallback: 'CreateRequest',
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
@@ -69,7 +67,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       ]
     })
   }
-  else {msg.respond(msg.body.response_url, `${value} is a bad choice!`)}
+  else {msg.respond(msg.body.response_url, `Cancelled ticket creation.`)}
 })
 
 app.get('/', function (req, res) {
