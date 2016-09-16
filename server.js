@@ -26,7 +26,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
           actions: [
-            { name: 'answer', text: 'Yes', type: 'button', value: 'yes' },
+            { name: 'answer', text: 'Yes', type: 'button', value: 'yes', usr_realname: msg.body.event.user.name, description: match1, teamid: msg.body.team_id },
             { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
           ]
         }
@@ -38,22 +38,6 @@ slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile ' + state.what)
 })
 
-slapp.message('yesno', (msg) => {
-  msg.say({
-      text: '',
-      attachments: [
-        {
-          text: '',
-          fallback: 'Yes or No?',
-          callback_id: 'yesno_callback',
-          actions: [
-            { name: 'answer', text: 'Yes', type: 'button', value: 'yes' },
-            { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
-          ]
-        }]
-      })
-})
-
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   if (value === 'yes') {
     msg.respond({
@@ -63,7 +47,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
             mrkdwn_in: ['text', 'pretext'],
             fallback: "Required plain-text summary of the attachment.",
             color: "#2ab27b",
-            text: "Request <https://ubisoft.service-now.com/sos/request_item.do?sysparm_sys_id=9b9a6128db3066c49f8f785e0f9619a6|RTASK0341941> has been created."
+            text: 'Request <https://ubisoft.service-now.com/sos/request_item.do?sysparm_sys_id=9b9a6128db3066c49f8f785e0f9619a6|RTASK0341941> has been created. ' + teamid
          }
       ]
     })
