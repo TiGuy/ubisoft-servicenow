@@ -38,7 +38,7 @@ slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile ' + state.what)
 })
 
-slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
+slapp.action('CreateRequest_callback', 'answer', (msg, value, teamid) => {
   if (value === 'yes') {
     msg.respond({
       text: '',
