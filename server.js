@@ -52,7 +52,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       ]
     })
   }
-  else {msg.respond(msg.body.response_url, `Cancelled ticket creation.`)}
+  else {msg.respond(msg.body.response_url, value)}
 })
 
 app.get('/', function (req, res) {
