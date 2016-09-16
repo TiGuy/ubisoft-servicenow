@@ -52,7 +52,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       ]
     })
   }
-  else {msg.respond(msg.body.response_url, value)}
+  else {msg.respond(msg.body.response_url, msg.original_message)}
 })
 
 app.get('/', function (req, res) {
