@@ -39,7 +39,7 @@ slapp.route('handleCreateRequest', (msg, state) => {
 })
 
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
-  if (value.respnse === 'yes') {
+  if (value.response === 'yes') {
     msg.respond({
       text: '',
       attachments: [
