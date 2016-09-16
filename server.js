@@ -15,13 +15,13 @@ require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 
 var app = slapp.attachToExpress(express())
 slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
-  var userinfo = slapp.client.users.info({token: msg.meta.app_token, user: msg.body.event.user}, (err, data) => {return user.real_name})
+  slapp.client.users.info({token: msg.meta.app_token, user: msg.body.event.user}, (err, data) {
     msg.say({
       text: 'Are you sure you want to create this Request?',
       attachments: [
         {
           mrkdwn_in: ['text', 'pretext'],
-          text: '*Short Description:* Request created on Slack by ' + userinfo + '\n *Description:* ' + match1,
+          text: '*Short Description:* Request created on Slack by ' + info.user.real_name + '\n *Description:* ' + match1,
           fallback: 'CreateRequest',
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
@@ -33,7 +33,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
       ]
     })
   })
-
+})
 slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile ' + state.what)
 })
