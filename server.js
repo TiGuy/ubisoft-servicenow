@@ -39,7 +39,7 @@ slapp.route('handleCreateRequest', (msg, state) => {
 })
 
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
-  if (value.response === 'yes') {
+  if (value === 'yes') {
     msg.respond({
       text: '',
       attachments: [
@@ -47,7 +47,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
             mrkdwn_in: ['text', 'pretext'],
             fallback: "Required plain-text summary of the attachment.",
             color: "#2ab27b",
-            text: 'Request <https://ubisoft.service-now.com/sos/request_item.do?sysparm_sys_id=9b9a6128db3066c49f8f785e0f9619a6|RTASK0341941> has been created. ' + value.teamid
+            text: 'Request <https://ubisoft.service-now.com/sos/request_item.do?sysparm_sys_id=9b9a6128db3066c49f8f785e0f9619a6|RTASK0341941> has been created.'
          }
       ]
     })
