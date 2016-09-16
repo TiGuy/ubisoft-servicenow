@@ -26,7 +26,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
           actions: [
-            { name: 'answer', text: 'Yes', type: 'button', value: [response: 'yes', usr_realname: msg.body.event.user.name, description: match1, teamid: data.user.real_name] },
+            { name: 'answer', text: 'Yes', type: 'button', value: [{response: 'yes', usr_realname: msg.body.event.user.name, description: match1, teamid: data.user.real_name}] },
             { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
           ]
         }
@@ -38,7 +38,7 @@ slapp.route('handleCreateRequest', (msg, state) => {
   msg.say(':smile ' + state.what)
 })
 
-slapp.action('CreateRequest_callback', 'answer', (msg, value[]) => {
+slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   if (value.response === 'yes') {
     msg.respond({
       text: '',
