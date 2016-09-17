@@ -34,7 +34,7 @@ var options = {
     client_id: ClientID,
     client_secret: ClientSecret,
     username: APIUsername,
-    password: APIPassword
+    password: APIPassword,
   }
 }
 
@@ -89,7 +89,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
-    var oauth_response = request(options)
+    var oauth_response[] = request(options)
     var access_token = oauth_response['access_token']
     var ticketoptions = {
       method: 'POST',
