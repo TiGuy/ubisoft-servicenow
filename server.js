@@ -96,7 +96,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       url: RequestURL,
       headers: {
         'content-type': 'application/json',
-        'Authorization': 'Bearer ' + "k5DkmfM2k2obNUUyKp8DHyc5buefejG1ilkWPxaju6p-R3JGGQaiI7uUNShLYarMv1b0mDivbwUOU-0numadpQ",
+        'Authorization': 'Bearer ' + access_token,
         'cache-control': 'no-cache',
       },
       form: {
