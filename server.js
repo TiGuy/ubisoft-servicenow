@@ -89,8 +89,9 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
-    request(options)
-
+    request(options) {
+      var tmp = JSON.parse(body)
+      if (access_token === "") access_token = tmp.access_token
     var ticketoptions = {
       method: 'POST',
       url: RequestURL,
@@ -108,7 +109,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       }
     }
     request(ticketoptions)
-    access_token = ""
+    access_token = ""}
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
   }
 })
@@ -117,13 +118,13 @@ app.get('/', function (req, res) {
   res.send('Hello')
 })
 
-request(options, function (error, response, body) {
+/*request(options, function (error, response, body) {
     if (error) throw new Error(error)
     console.log(body)
     var tmp = JSON.parse(body)
     if (access_token === "") access_token = tmp.access_token
     console.log(access_token)
-})
+})*/
 
 console.log('Listening on :' + process.env.PORT)
 app.listen(process.env.PORT)
