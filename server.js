@@ -122,6 +122,7 @@ request(options, function (error, response, body) {
     //console.log(response)
     var tmp = JSON.parse(body)
     if (access_token === "") access_token = tmp.access_token
+    console.log(access_token)
 })
 
 console.log('Listening on :' + process.env.PORT)
