@@ -102,7 +102,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       body: {
         'requested_for': 'David Racine',
         'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
-        'short_description': = 'Test from Slack',
+        'short_description': 'Test from Slack',
         'Description': 'Test from Slack',
         'assignment_group': 'IT-QUE Service Technique',
       }
