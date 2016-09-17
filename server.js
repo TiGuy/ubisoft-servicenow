@@ -119,7 +119,7 @@ app.get('/', function (req, res) {
 
 request(options, function (error, response, body) {
     if (error) throw new Error(error)
-    //console.log(response)
+    console.log(body)
     var tmp = JSON.parse(body)
     if (access_token === "") access_token = tmp.access_token
     console.log(access_token)
