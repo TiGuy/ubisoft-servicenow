@@ -31,7 +31,7 @@ var options = {
   },
   form: {
     grant_type: 'password',
-    client_id: CLientID,
+    client_id: ClientID,
     client_secret: ClientSecret,
     username: APIUsername,
     password: APIPassword
