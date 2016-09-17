@@ -13,7 +13,7 @@ function requireEnvVariable(name) {
 }
 
 var OAuthURL = requireEnvVariable('OAuthURL')
-var ClienID = requireEnvVariable('ClienID')
+var ClientID = requireEnvVariable('ClienID')
 var ClientSecret = requireEnvVariable('ClientSecret')
 var RequestURL = requireEnvVariable('RequestURL')
 var IncidentURL = requireEnvVariable('IncidentURL')
