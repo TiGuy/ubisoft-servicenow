@@ -90,7 +90,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   }
   else {
     request(options)
-    
+
     var ticketoptions = {
       method: 'POST',
       url: RequestURL,
@@ -107,7 +107,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
         'assignment_group': 'IT-QUE Service Technique',
       }
     }
-    request(ticketoptions)
+  //  request(ticketoptions)
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
   }
 })
@@ -118,7 +118,8 @@ app.get('/', function (req, res) {
 
 request(options, function (error, response, body) {
     if (error) throw new Error(error)
-    access_token = body.access_token
+    console.log(body.access_token)
+  //  access_token = body.access_token
 })
 
 console.log('Listening on :' + process.env.PORT)
