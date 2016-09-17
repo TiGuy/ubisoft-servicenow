@@ -99,7 +99,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
         'Authorization': 'Bearer ' + "k5DkmfM2k2obNUUyKp8DHyc5buefejG1ilkWPxaju6p-R3JGGQaiI7uUNShLYarMv1b0mDivbwUOU-0numadpQ",
         'cache-control': 'no-cache',
       },
-      body: {
+      form: {
         'requested_for': 'David Racine',
         'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
         'short_description': 'Test from Slack',
