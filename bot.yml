@@ -4,3 +4,30 @@ slackscopes:
   - bot
   - commands
   - reactions:write
+config:
+  - name: OAuth_url
+    friendly_name: OAuth URL
+    info: ServiceNow Oauth URL
+    global: true
+  - name: ClienID
+    friendly_name: OAuth Client ID
+    info: ServiceNow OAuth Client ID
+    global: true
+  - name: ClientSecret
+    friendly_name: OAuth Client Secret
+    info: ServiceNow Oauth Client Secret
+    global: true
+    type: secret
+  - name: API_url
+    friendly_name: API URL
+    info: ServiceNow API URL
+    global: true
+  - name: APIUsername
+    friendly_name: API Username
+    info: ServiceNow API Username
+    global: true
+  - name: APIPassword
+    friendly_name: API Password
+    info: ServiceNow API Password
+    type: secret
+    global: true
