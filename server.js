@@ -3,8 +3,31 @@ const express = require('express')
 const Slapp = require('slapp')
 const BeepBoopConvoStore = require('slapp-convo-beepboop')
 const BeepBoopContext = require('slapp-context-beepboop')
+var OAuthURL = requireEnvVariable('OAuthURL')
+var ClienID = requireEnvVariable('ClienID')
+var ClientSecret = requireEnvVariable('ClientSecret')
+var RequestURL = requireEnvVariable('RequestURL')
+var IncidentURL = requireEnvVariable('IncidentURL')
+var APIUsername = requireEnvVariable('APIUsername')
+var APIPassword = requireEnvVariable('APIPassword')
 
 var request = require('request')
+
+var options = {
+  method: 'POST',
+  url: OAuthURL,
+  headers: {
+    'content-type': 'application/x-www-form-urlencoded',
+    'cache-control': 'no-cache',
+  },
+  form: {
+    grant_type: 'password',
+    client_id: CLientID,
+    client_secret: ClientSecret,
+    username: APIUsername,
+    password: APIPassword
+  }
+}
 
 
 if (!process.env.PORT) throw Error('PORT missing but required')
@@ -56,11 +79,20 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       ]
     })
   }
-  else {msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)}
+  else {
+    request(options)
+    //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
+  }
 })
 
 app.get('/', function (req, res) {
   res.send('Hello')
+})
+
+request(options, function (error, response, body) {
+    if (error) throw new Error(error)
+
+    console.log(body)
 })
 
 console.log('Listening on :' + process.env.PORT)

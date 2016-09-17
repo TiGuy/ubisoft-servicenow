@@ -5,7 +5,7 @@ slackscopes:
   - commands
   - reactions:write
 config:
-  - name: OAuth_url
+  - name: OAuthURL
     friendly_name: OAuth URL
     info: ServiceNow Oauth URL
     global: true
