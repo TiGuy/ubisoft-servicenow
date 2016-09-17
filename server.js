@@ -89,7 +89,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
-    //request(options)
+    request(options)
 
     var ticketoptions = {
       method: 'POST',
@@ -118,8 +118,8 @@ app.get('/', function (req, res) {
 
 request(options, function (error, response, body) {
     if (error) throw new Error(error)
-    console.log(response)
-  //  access_token = body.access_token
+    //console.log(response)
+    access_token = body.access_token
 })
 
 console.log('Listening on :' + process.env.PORT)
