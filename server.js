@@ -19,7 +19,7 @@ var RequestURL = requireEnvVariable('RequestURL')
 var IncidentURL = requireEnvVariable('IncidentURL')
 var APIUsername = requireEnvVariable('APIUsername')
 var APIPassword = requireEnvVariable('APIPassword')
-
+var access_token = ""
 var request = require('request')
 
 var options = {
@@ -89,8 +89,8 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
-    var oauth_response = request(options)
-    var access_token = oauth_response['access_token']
+    request(options)
+    
     var ticketoptions = {
       method: 'POST',
       url: RequestURL,
@@ -107,7 +107,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
         'assignment_group': 'IT-QUE Service Technique',
       }
     }
-    var requestcreated = request(ticketoptions)
+    request(ticketoptions)
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
   }
 })
@@ -118,8 +118,7 @@ app.get('/', function (req, res) {
 
 request(options, function (error, response, body) {
     if (error) throw new Error(error)
-
-    return body
+    access_token = body.access_token
 })
 
 console.log('Listening on :' + process.env.PORT)
