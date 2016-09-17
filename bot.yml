@@ -18,9 +18,13 @@ config:
     info: ServiceNow Oauth Client Secret
     global: true
     type: secret
-  - name: API_url
-    friendly_name: API URL
-    info: ServiceNow API URL
+  - name: RequestURL
+    friendly_name: Requests URL
+    info: ServiceNow Requests URL
+    global: true
+  - name: IncidentURL
+    friendly_name: Incident URL
+    info: ServiceNow Incident URL
     global: true
   - name: APIUsername
     friendly_name: API Username
