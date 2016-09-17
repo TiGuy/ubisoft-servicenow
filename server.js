@@ -89,7 +89,25 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
-    request(options)
+    var oauth_response = request(options)
+    var access_token = oauth_response['access_token']
+    var ticketoptions = {
+      method: 'POST',
+      url: RequestURL,
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + access_token,
+        'cache-control': 'no-cache',
+      },
+      body: {
+        'requested_for': 'David Racine',
+        'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
+        'short_description': = 'Test from Slack',
+        'Description': 'Test from Slack',
+        'assignment_group': 'IT-QUE Service Technique',
+      }
+    }
+    createrequest(ticketoptions)
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
   }
 })
@@ -98,10 +116,15 @@ app.get('/', function (req, res) {
   res.send('Hello')
 })
 
+createrequest(ticketoptions, function (error, response, body) {
+    if (error) throw new Error(error)
+
+})
+
 request(options, function (error, response, body) {
     if (error) throw new Error(error)
 
-    console.log(body)
+    return body
 })
 
 console.log('Listening on :' + process.env.PORT)
