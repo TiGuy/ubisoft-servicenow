@@ -3,6 +3,15 @@ const express = require('express')
 const Slapp = require('slapp')
 const BeepBoopConvoStore = require('slapp-convo-beepboop')
 const BeepBoopContext = require('slapp-context-beepboop')
+
+function requireEnvVariable(name) {
+  var value = process.env[name];
+  if(!value) {
+    throw new Error(name + ' is required!');
+  }
+  return value;
+}
+
 var OAuthURL = requireEnvVariable('OAuthURL')
 var ClienID = requireEnvVariable('ClienID')
 var ClientSecret = requireEnvVariable('ClientSecret')
