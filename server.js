@@ -118,7 +118,7 @@ app.get('/', function (req, res) {
 
 request(options, function (error, response, body) {
     if (error) throw new Error(error)
-    console.log(body.access_token)
+    console.log(body)
   //  access_token = body.access_token
 })
 
