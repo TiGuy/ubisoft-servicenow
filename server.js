@@ -96,7 +96,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
       url: RequestURL,
       headers: {
         'content-type': 'application/json',
-        'Authorization': 'Bearer ' + access_token,
+        'Authorization': 'Bearer ' + "k5DkmfM2k2obNUUyKp8DHyc5buefejG1ilkWPxaju6p-R3JGGQaiI7uUNShLYarMv1b0mDivbwUOU-0numadpQ",
         'cache-control': 'no-cache',
       },
       body: {
@@ -107,7 +107,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
         'assignment_group': 'IT-QUE Service Technique',
       }
     }
-  //  request(ticketoptions)
+    request(ticketoptions)
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
   }
 })
