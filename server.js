@@ -120,9 +120,9 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     }
     request(ticketoptions)
     access_token = ""}
-    //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
+    //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)*/
   }
-*/}
+}
 
 app.get('/', function (req, res) {
   res.send('Hello')
