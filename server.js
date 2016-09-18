@@ -113,7 +113,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                 'assignment_group': 'IT-QUE Service Technique',
               }
             }
-            /*request(ticketoptions, function(error, response, body){
+            request(ticketoptions, function(error, response, body){
               if(response.statusCode === 201) {
                 msg.respond({
                   text: '',
@@ -141,7 +141,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                   ]
                 })
               }
-            })*/
+            })
           }
         })
       }
