@@ -89,6 +89,17 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
+    msg.respond({
+      text: '',
+      attachments: [
+          {
+            mrkdwn_in: ['text', 'pretext'],
+            fallback: "Required plain-text summary of the attachment.",
+            color: "#3AA3E3",
+            text: 'Processing request...'
+         }
+      ]
+    })
     console.log(value)
     var data = value.split("¤")
     request(options, function(error, response, body){
@@ -127,7 +138,6 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                      }
                   ]
                 })
-                //console.log(body.result[2].substring(10))
               }
               else {
                 msg.respond({
