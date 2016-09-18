@@ -114,6 +114,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
               }
             }
             request(ticketoptions, function(error, response, body){
+              console.log(response)
               if(response.statusCode === 201) {
                 msg.respond({
                   text: '',
