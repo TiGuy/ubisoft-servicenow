@@ -108,7 +108,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
               json: {
                 'requested_for': data[0],
                 'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
-                'short_description': 'Request created on Slack by' + data[0],
+                'short_description': 'Request created on Slack by ' + data[0],
                 'description': data[1],
                 'assignment_group': 'IT-QUE Service Technique',
               }
@@ -122,7 +122,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                         mrkdwn_in: ['text', 'pretext'],
                         fallback: "Required plain-text summary of the attachment.",
                         color: "#2ab27b",
-                        text: 'Request <' + body.result[4] + '|' + body.result[2].substring(10) + '> has been created.'
+                        text: 'Request <' + body.result[4] + '|' + body.result[2].substring(10) + '> has been created. You can click on the link to add watchers or file attachments'
                      }
                   ]
                 })
@@ -146,45 +146,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
         })
       }
     })
-/*
 
-
-
-     {
-      var tmp = JSON.parse(body)
-      if (access_token === "") access_token = tmp.access_token
-    var ticketoptions = {
-      method: 'POST',
-      url: RequestURL,
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': 'Bearer ' + access_token,
-        'cache-control': 'no-cache',
-      },
-      form: {
-        'requested_for': 'David Racine',
-        'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
-        'short_description': 'Test from Slack',
-        'Description': 'Test from Slack',
-        'assignment_group': 'IT-QUE Service Technique',
-      }
-    }
-    request(ticketoptions)
-    access_token = ""}
-    //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)*/
-
-
-app.get('/', function (req, res) {
-  res.send('Hello')
-})
-
-/*request(options, function (error, response, body) {
-    if (error) throw new Error(error)
-    console.log(body)
-    var tmp = JSON.parse(body)
-    if (access_token === "") access_token = tmp.access_token
-    console.log(access_token)
-})*/
 
 console.log('Listening on :' + process.env.PORT)
 app.listen(process.env.PORT)
