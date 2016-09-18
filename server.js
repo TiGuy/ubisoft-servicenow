@@ -90,10 +90,9 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   }
   else {
     request(options, function(error, response, body){
-        if(error) {
-            console.log(error)
-        } else {
-            console.log(response.statusCode, body)
+        if(response.statusCode === "200") {
+            console.log(body)
+        } 
     }})
 
   }
