@@ -75,15 +75,15 @@ slapp.route('handleCreateRequest', (msg, state) => {
 })
 
 slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
-  if (value === 'yes') {
+  if (value === 'no') {
     msg.respond({
       text: '',
       attachments: [
           {
             mrkdwn_in: ['text', 'pretext'],
             fallback: "Required plain-text summary of the attachment.",
-            color: "#2ab27b",
-            text: 'Request <https://ubisoft.service-now.com/sos/request_item.do?sysparm_sys_id=9b9a6128db3066c49f8f785e0f9619a6|RTASK0341941> has been created.'
+            color: "#e60000",
+            text: 'Request creation cancelled.'
          }
       ]
     })
@@ -104,10 +104,10 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                 'cache-control': 'no-cache',
               },
               json: {
-                'requested_for': 'David Racine',
+                'requested_for': value.usr_realname,
                 'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
-                'short_description': 'Test from Slack',
-                'description': 'Test from Slack',
+                'short_description': 'Request created on Slack by' + value.usr_realname,
+                'description': value.match1,
                 'assignment_group': 'IT-QUE Service Technique',
               }
             }
@@ -126,13 +126,24 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                 })
                 //console.log(body.result[2].substring(10))
               }
-            //  console.log(response.statusCode, body)
-                          })
-        }
+              else {
+                msg.respond({
+                  text: '',
+                  attachments: [
+                      {
+                        mrkdwn_in: ['text', 'pretext'],
+                        fallback: "Required plain-text summary of the attachment.",
+                        color: "#e60000",
+                        text: 'Error during Request creation.'
+                     }
+                  ]
+                })
+              }
+            })
+          }
+        })
+      }
     })
-
-  }
-})
 /*
 
 
