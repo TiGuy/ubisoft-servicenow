@@ -112,6 +112,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
               }
             }
             request(ticketoptions, function(error, response, body){
+              console.log(response.statusCode, body)
                           })
         }
     })
