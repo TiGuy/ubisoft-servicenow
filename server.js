@@ -91,10 +91,13 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   else {
     request(options, function(error, response, body){
         if(error) {
-            console.log(error);
+            console.log(error)
         } else {
-            console.log(response.statusCode, body);
+            console.log(response.statusCode, body)
     }})
+
+  }
+})
 /*
 
 
@@ -121,8 +124,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     request(ticketoptions)
     access_token = ""}
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)*/
-  }
-}
+
 
 app.get('/', function (req, res) {
   res.send('Hello')
