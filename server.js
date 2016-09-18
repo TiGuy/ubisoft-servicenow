@@ -62,7 +62,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
           actions: [
-            { name: 'answer', text: 'Yes', type: 'button', value: [{response: 'yes', usr_realname: msg.body.event.user.name, description: match1, teamid: data.user.real_name}] },
+            { name: 'answer', text: 'Yes', type: 'button', value: msg.body.event.user.name + '¤' + match1 },
             { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
           ]
         }
@@ -89,11 +89,13 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
+    console.log(value)
+    var data = value.split("¤")
     request(options, function(error, response, body){
         if(response.statusCode === 200) {
             var tmp = JSON.parse(body)
             access_token = tmp.access_token
-            console.log(value)
+
 
             var ticketoptions = {
               method: 'POST',
@@ -104,10 +106,10 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
                 'cache-control': 'no-cache',
               },
               json: {
-                'requested_for': value.usr_realname,
+                'requested_for': data[0],
                 'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
-                'short_description': 'Request created on Slack by' + value.usr_realname,
-                'description': value.match1,
+                'short_description': 'Request created on Slack by' + data[0],
+                'description': data[1],
                 'assignment_group': 'IT-QUE Service Technique',
               }
             }
