@@ -107,7 +107,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
               },
               json: {
                 'requested_for': data[0],
-                'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
+                'u_category': 'Other > Other > Other Request',
                 'short_description': 'Request created on Slack by ' + data[0],
                 'description': data[1],
                 'assignment_group': 'IT-QUE Service Technique',
