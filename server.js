@@ -62,7 +62,7 @@ slapp.message('CreateRequest (.*)', 'direct_message', (msg, text, match1) => {
           callback_id: 'CreateRequest_callback',
           color: '#3AA3E3',
           actions: [
-            { name: 'answer', text: 'Yes', type: 'button', value: msg.body.event.user.name + '¤' + match1 },
+            { name: 'answer', text: 'Yes', type: 'button', value: data.user.real_name + '¤' + match1 },
             { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
           ]
         }
