@@ -89,7 +89,17 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     })
   }
   else {
-    request(options) {
+    request(options, function(error, response, body){
+        if(error) {
+            console.log(error);
+        } else {
+            console.log(response.statusCode, body);
+    })
+/*
+
+
+
+     {
       var tmp = JSON.parse(body)
       if (access_token === "") access_token = tmp.access_token
     var ticketoptions = {
@@ -112,7 +122,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
     access_token = ""}
     //msg.respond(msg.body.response_url, 'test ' + msg.body.original_message.text.attachments.text)
   }
-})
+*/}
 
 app.get('/', function (req, res) {
   res.send('Hello')
