@@ -94,6 +94,25 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
             var tmp = JSON.parse(body)
             access_token = tmp.access_token
             console.log(access_token)
+
+            var ticketoptions = {
+              method: 'POST',
+              url: RequestURL,
+              headers: {
+                'content-type': 'application/json',
+                'Authorization': 'Bearer ' + access_token,
+                'cache-control': 'no-cache',
+              },
+              json: {
+                'requested_for': 'David Racine',
+                'u_category': 'LOCAL IT SUPPORT SERVICES > Laptop > Install, Prepare Or Configure',
+                'short_description': 'Test from Slack',
+                'Description': 'Test from Slack',
+                'assignment_group': 'IT-QUE Service Technique',
+              }
+            }
+            request(ticketoptions, function(error, response, body){
+                          })
         }
     })
 
