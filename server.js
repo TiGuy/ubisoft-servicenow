@@ -93,7 +93,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
         if(response.statusCode === 200) {
             var tmp = JSON.parse(body)
             access_token = tmp.access_token
-            console.log(access_token)
+            //console.log(access_token)
 
             var ticketoptions = {
               method: 'POST',
@@ -113,7 +113,18 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
             }
             request(ticketoptions, function(error, response, body){
               if(response.statusCode === 201) {
-                console.log(body.result[2].substring(10))
+                msg.respond({
+                  text: '',
+                  attachments: [
+                      {
+                        mrkdwn_in: ['text', 'pretext'],
+                        fallback: "Required plain-text summary of the attachment.",
+                        color: "#2ab27b",
+                        text: 'Request <' + body.result[4] + '|' + body.result[2].substring(10) + '> has been created.'
+                     }
+                  ]
+                })
+                //console.log(body.result[2].substring(10))
               }
             //  console.log(response.statusCode, body)
                           })
