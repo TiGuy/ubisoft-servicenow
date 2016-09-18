@@ -91,9 +91,11 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
   else {
     request(options, function(error, response, body){
         if(response.statusCode === "200") {
-            console.log(body)
-        } 
-    }})
+            var tmp = JSON.parse(body)
+            access_token = tmp.access_token
+            console.log(access_token)
+        }
+    })
 
   }
 })
