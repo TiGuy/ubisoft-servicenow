@@ -94,7 +94,7 @@ slapp.action('CreateRequest_callback', 'answer', (msg, value) => {
             console.log(error);
         } else {
             console.log(response.statusCode, body);
-    })
+    }})
 /*
 
 
